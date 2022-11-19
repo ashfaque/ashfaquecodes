@@ -7,7 +7,8 @@
 # twine upload dist/*
 
 
-from distutils.core import setup
+# from distutils.core import setup
+from setuptools import setup
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -15,8 +16,8 @@ with open("README.md", "r") as fh:
 setup(
   name = 'ashfaquecodes',         # How you named your package folder (MyLib)
   packages = ['ashfaquecodes'],   # Chose the same as "name"
-  version = '0.5',      # Start with a small number and increase it with every change you make
-  download_url = 'https://github.com/ashfaque/ashfaquecodes/archive/refs/tags/v_05.tar.gz',    # Link of your source code
+  version = '0.4',      # Start with a small number and increase it with every change you make
+  download_url = 'https://github.com/ashfaque/ashfaquecodes/archive/refs/tags/v_04.tar.gz',    # Link of your source code
   license='GNU GPLv3',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository or, https://choosealicense.com/
   description = 'Codes which can be used to increase productivity.',   # Give a short description about your library
   long_description_content_type = "text/markdown",    # Really important if you are using README.md format.
