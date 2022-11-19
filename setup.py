@@ -8,7 +8,7 @@ setup(
   author = 'Ashfaque Alam',                   # Type in your name
   author_email = 'ashfaquealam496@yahoo.com',      # Type in your E-Mail
   url = 'https://github.com/ashfaque/ashfaquecodes',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/ashfaque/ashfaquecodes/archive/refs/tags/v_01.tar.gz',    # Link of your source code
+  download_url = 'https://github.com/ashfaque/ashfaquecodes/archive/refs/tags/v_02.tar.gz',    # Link of your source code
   keywords = ['ASHFAQUE', 'ASHFAQUECODES', 'PRODUCTIVITY'],   # Keywords that define your package best
   install_requires=[            # Your packages dependencies
           'colorama'
