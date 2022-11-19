@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/pypi/l/pandas.svg)](https://github.com/ashfaque/ashfaquecodes/blob/main/LICENSE)
+[![License: GNU GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/ashfaque/ashfaquecodes/blob/main/LICENSE)
 
 ## How to install
 ```sh
