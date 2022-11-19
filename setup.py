@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'ashfaquecodes',         # How you named your package folder (MyLib)
   packages = ['ashfaquecodes'],   # Chose the same as "name"
-  version = '0.1',      # Start with a small number and increase it with every change you make
+  version = '0.2',      # Start with a small number and increase it with every change you make
   license='GNU GPLv3',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository or, https://choosealicense.com/
   description = 'Codes which can be used to increase productivity.',   # Give a short description about your library
   author = 'Ashfaque Alam',                   # Type in your name
