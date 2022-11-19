@@ -1,3 +1,12 @@
+# Change version & download_url in setup.py
+# Push the changes
+# Create new relase on GitHub
+# Activate py env
+# python setup.py sdist
+# pip install twine
+# twine upload dist/*
+
+
 from distutils.core import setup
 
 with open("README.md", "r") as fh:
@@ -6,13 +15,14 @@ with open("README.md", "r") as fh:
 setup(
   name = 'ashfaquecodes',         # How you named your package folder (MyLib)
   packages = ['ashfaquecodes'],   # Chose the same as "name"
-  version = '0.3',      # Start with a small number and increase it with every change you make
+  version = '0.4',      # Start with a small number and increase it with every change you make
+  download_url = 'https://github.com/ashfaque/ashfaquecodes/archive/refs/tags/v_04.tar.gz',    # Link of your source code
   license='GNU GPLv3',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository or, https://choosealicense.com/
   description = 'Codes which can be used to increase productivity.',   # Give a short description about your library
+  long_description = long_description,      # Long description read from the the readme file
   author = 'Ashfaque Alam',                   # Type in your name
   author_email = 'ashfaquealam496@yahoo.com',      # Type in your E-Mail
   url = 'https://github.com/ashfaque/ashfaquecodes',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/ashfaque/ashfaquecodes/archive/refs/tags/v_03.tar.gz',    # Link of your source code
   keywords = ['ASHFAQUE', 'ASHFAQUECODES', 'PRODUCTIVITY'],   # Keywords that define your package best
   install_requires=[            # Your packages dependencies
           'colorama'
