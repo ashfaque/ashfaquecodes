@@ -147,7 +147,7 @@ def sort_list_of_dicts(unsorted_list : list, key : str, desc : bool = False) -> 
 ##### USAGE #####
 #################
 
-# from ashfaquecodes import sort_list_of_dicts
+# from ashfaquecodes.ashfaquecodes import sort_list_of_dicts
 # sort_list_of_dicts(unsorted_list = unsorted_lst, key = 'dict_key_name', desc = True)
 
 '''
@@ -195,7 +195,7 @@ def get_execution_end_time(execution_start_time : float, print_time : bool = Fal
 ##### USAGE #####
 #################
 
-# from ashfaquecodes import (
+# from ashfaquecodes.ashfaquecodes import (
 #     execution_start_time
 #     , total_execution_time_str
 # )
@@ -273,7 +273,7 @@ def timer(func):
 ##### USAGE #####
 #################
 
-# from ashfaquecodes import timer
+# from ashfaquecodes.ashfaquecodes import timer
 # @timer
 # def your_function(request):
     # pass
