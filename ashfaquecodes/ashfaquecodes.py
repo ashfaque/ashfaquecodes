@@ -282,3 +282,56 @@ def timer(func):
     END
 '''
 
+
+'''
+    Author : Ashfaque Alam
+    Date : January 27, 2024
+    Custom Colored Print Function
+'''
+# import colorama
+
+# colorama.init()
+
+def cprint(text, color='white'):
+    colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
+
+    if color not in colors:
+        raise ValueError("Invalid color. Choose from: " + ",".join(colors))
+
+    colored_text = getattr(colorama.Fore, color.upper()) + colorama.Style.BRIGHT + text + colorama.Style.RESET_ALL
+
+    print(colored_text)
+
+#################
+##### USAGE #####
+#################
+### ? (Just like the original `print` function with additinal color parameter.)
+# cprint('This is ' + 'a' + ' test print statement', color='red')
+# cprint('This is an error message', color='green')
+# cprint("Python : %2d, Portal : %5.2f" % (1, 05.333), color='yellow')
+# cprint("Total students : %3d, Boys : %2d" % (240, 120), color='blue')
+# cprint("%7.3o" % (25), color='magenta')
+# cprint("%10.3E" % (356.08977), color='cyan')
+# cprint('I love "{}!"'.format('Python'), color='white')
+# cprint(f"I love {'Python'} \"{'Language'}!\"", color='red')
+
+# data = dict(fun ="Python", adj ="Portal")
+# cprint("I love {fun} computer {adj}".format(**data), color='red')
+
+# cstr = "I love Python"
+# # Printing the center aligned string with fillchr
+# cprint("Center aligned string with fillchr: ", color='green')
+# cprint(cstr.center(40, '#'), color='yellow')
+
+# # cprinting the left aligned string with "-" padding
+# cprint("The left aligned string is : ", color='blue')
+# cprint(cstr.ljust(40, '-'), color='magenta')
+
+# # cprinting the right aligned string with "-" padding
+# cprint("The right aligned string is : ", color='cyan')
+# cprint(cstr.rjust(40, '-'), color='white')
+
+
+'''
+    ENDS
+'''
