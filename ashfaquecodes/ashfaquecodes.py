@@ -306,6 +306,9 @@ def cprint(text, color='white'):
 ##### USAGE #####
 #################
 ### ? (Just like the original `print` function with additinal color parameter.)
+
+# from ashfaquecodes.ashfaquecodes import cprint
+
 # cprint('This is ' + 'a' + ' test print statement', color='red')
 # cprint('This is an error message', color='green')
 # cprint("Python : %2d, Portal : %5.2f" % (1, 05.333), color='yellow')
@@ -331,6 +334,72 @@ def cprint(text, color='white'):
 # cprint("The right aligned string is : ", color='cyan')
 # cprint(cstr.rjust(40, '-'), color='white')
 
+
+'''
+    ENDS
+'''
+
+'''
+    Author : Ashfaque Alam
+    Date : January 27, 2024
+    Custom Colored Pretty Print Function
+'''
+
+import pprint
+# import colorama
+
+# colorama.init()
+
+def cpprint(
+        data
+        , color: str = 'white'
+        , indent: int = 2
+        , width: int = 120    # ? width : The number of characters per line used in formatting.
+        , depth: int = None    # ? depth : controls the maximum depth to print nested structures. It can be useful when dealing with deeply nested data structures to limit the output to a certain level. Setting it to `None` means no depth limit.
+        , compact: bool = False    # ? When set to `True`, tries to minimize the amount of white space used in the output. When `False`, it inserts some new lines character to make the output easier to read.
+        , sort_dicts: bool = False    # ? If `True`, dictionaries will be sorted by key. If `False`, the order of keys in dictionaries will be maintained.
+):
+    colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
+
+    if color not in colors:
+        raise ValueError("Invalid color. Choose from: " + ",".join(colors))
+
+    # Format data using pprint.pformat
+    formatted_data = pprint.pformat(data, indent=indent, width=width, depth=depth, compact=compact, sort_dicts=sort_dicts)
+    # # Use pprint.PrettyPrinter for formatting with optional parameters
+    # pretty_printer = pprint.PrettyPrinter(indent=indent, width=width, depth=depth, compact=compact, sort_dicts=sort_dicts)
+    # formatted_data = pretty_printer.pformat(data)
+
+    # Apply color to the formatted data
+    colored_text = getattr(colorama.Fore, color.upper()) + colorama.Style.BRIGHT + formatted_data + colorama.Style.RESET_ALL
+
+    print(colored_text)
+
+
+#################
+##### USAGE #####
+#################
+
+# from ashfaquecodes.ashfaquecodes import cpprint
+
+# sample_data = {
+#     'key5': 'value1',
+#     'key2': 'value2',
+#     'key3': {
+#         'nested_key': 'nested_value',
+#         'nested_dict': {
+#             'deep_key': 'deep_value'
+#         }
+#     },
+#     'key4': [1, 2, 3, 4, 5],
+#     'key1': [
+#         {'name': 'John', 'age': 30},
+#         {'name': 'Alice', 'age': 25},
+#         {'name': 'Bob', 'age': 35}
+#     ]
+# }
+
+# cpprint(sample_data, indent = 4, color='green', width=80, depth=2, compact=False, sort_dicts=True)
 
 '''
     ENDS

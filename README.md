@@ -65,5 +65,62 @@ pip install ashfaquecodes
         pass
     ```
 
+- Custom `cprint()` function to print output in the terminal with different colors.
+    ```python
+    from ashfaquecodes.ashfaquecodes import cprint
+
+    cprint('This is ' + 'a' + ' test print statement', color='red')
+    cprint('This is an error message', color='green')
+    cprint("Python : %2d, Portal : %5.2f" % (1, 05.333), color='yellow')
+    cprint("Total students : %3d, Boys : %2d" % (240, 120), color='blue')
+    cprint("%7.3o" % (25), color='magenta')
+    cprint("%10.3E" % (356.08977), color='cyan')
+    cprint('I love "{}!"'.format('Python'), color='white')
+    cprint(f"I love {'Python'} \"{'Language'}!\"", color='red')
+
+    data = dict(fun ="Python", adj ="Portal")
+    cprint("I love {fun} computer {adj}".format(**data), color='red')
+
+    cstr = "I love Python"
+    # Printing the center aligned string with fillchr
+    cprint("Center aligned string with fillchr: ", color='green')
+    cprint(cstr.center(40, '#'), color='yellow')
+
+    # cprinting the left aligned string with "-" padding
+    cprint("The left aligned string is : ", color='blue')
+    cprint(cstr.ljust(40, '-'), color='magenta')
+
+    # cprinting the right aligned string with "-" padding
+    cprint("The right aligned string is : ", color='cyan')
+    cprint(cstr.rjust(40, '-'), color='white')
+    ```
+
+- Custom `cpprint` function to pprint output in the terminal with different colors and different formats.
+    ```python
+    from ashfaquecodes.ashfaquecodes import cpprint
+
+    sample_data = {
+        'key5': 'value1',
+        'key2': 'value2',
+        'key3': {
+            'nested_key': 'nested_value',
+            'nested_dict': {
+                'deep_key': 'deep_value'
+            }
+        },
+        'key4': [1, 2, 3, 4, 5],
+        'key1': [
+            {'name': 'John', 'age': 30},
+            {'name': 'Alice', 'age': 25},
+            {'name': 'Bob', 'age': 35}
+        ]
+    }
+
+    cpprint(sample_data, indent = 4, color='green', width=80, depth=2, compact=False, sort_dicts=True)
+    # Available colors: ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
+    ```
+
+
 ## License
 [GNU GPLv3](LICENSE)
+
