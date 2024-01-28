@@ -292,13 +292,16 @@ def timer(func):
 
 # colorama.init()
 
-def cprint(text, color='white'):
+def cprint(*args, color='white'):
     colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
 
     if color not in colors:
         raise ValueError("Invalid color. Choose from: " + ",".join(colors))
 
-    colored_text = getattr(colorama.Fore, color.upper()) + colorama.Style.BRIGHT + text + colorama.Style.RESET_ALL
+    colored_text = getattr(colorama.Fore, color.upper()) + colorama.Style.BRIGHT
+    for arg in args:
+        colored_text += str(arg)
+    colored_text += colorama.Style.RESET_ALL
 
     print(colored_text)
 
