@@ -292,7 +292,7 @@ def timer(func):
 
 # colorama.init()
 
-def cprint(*args, color='white'):
+def cprint(*args, color='white', end='\n', sep=' '):
     colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
 
     if color not in colors:
@@ -303,7 +303,7 @@ def cprint(*args, color='white'):
         colored_text += str(arg)
     colored_text += colorama.Style.RESET_ALL
 
-    print(colored_text)
+    print(colored_text, end=end, sep=sep)
 
 #################
 ##### USAGE #####
