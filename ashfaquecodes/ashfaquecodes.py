@@ -409,3 +409,102 @@ def cpprint(
 '''
     ENDS
 '''
+
+
+'''
+    Author : Ashfaque Alam
+    Date : May 05, 2024
+    Query list of dicts with SQL-like WHERE clause.
+    NB: The `query_conditions` string should be in SQL format. For example, "age == 25 OR name LIKE '%user11%'". Both AND and OR operators are supported.
+'''
+
+import sqlite3
+from typing import List
+
+def query_list_of_dicts_sqlite(data: List[dict], query_conditions: str, table_name: str = 'input_list') -> List[dict]:
+    # NB: Each call to the function creates a new in-memory database, ensuring a fresh environment for each operation.
+    '''
+    # Example usage:-
+    ```python
+    query_conditions = "age > 25 OR name LIKE '%user11%'"
+    filtered_data = query_list_of_dicts(input_list_of_dicts, query_conditions)
+    ```
+    '''
+    # Create a SQLite database in memory
+    conn = sqlite3.connect(':memory:')
+    c = conn.cursor()
+
+    # Create a table
+    columns = ', '.join([f"{key} TEXT" for key in data[0].keys()])
+    c.execute(f"CREATE TABLE {table_name} ({columns})")
+
+    # Insert data into the table using executemany
+    values = [tuple(row.values()) for row in data]
+    c.executemany(f"INSERT INTO {table_name} VALUES ({', '.join(['?']*len(data[0]))})", values)
+
+    # Commit changes
+    conn.commit()
+
+    # Query the database
+    query = f"SELECT * FROM {table_name} WHERE {query_conditions}"
+    c.execute(query)
+    result = c.fetchall()
+
+    # Convert the result to a list of dictionaries
+    result_list = [dict(zip([column[0] for column in c.description], row)) for row in result]
+
+    # Close the connection
+    conn.close()
+
+    return result_list
+
+def query_list_of_dicts_pandas(data: List[dict], query_conditions: str) -> List[dict]:
+    '''
+    # Example usage:-
+    ```python
+    query_conditions = 'age == 25 or name.str.contains("user11")'
+    filtered_data = query_list_of_dicts(input_list_of_dicts, query_conditions)
+    ```
+    '''
+    # Check if pandas installed, else throw an error and ask to install it.
+    try:
+        import pandas as pd
+    except ImportError:
+        raise ImportError("The pandas library is not installed. Please install it using `pip install pandas`")
+
+    # Create a DataFrame from the list of dictionaries
+    df = pd.DataFrame(data)
+
+    # Query the DataFrame
+    result_df = df.query(query_conditions, engine='python')
+
+    # Convert the result to a list of dictionaries
+    result_list = result_df.to_dict(orient='records')
+
+    return result_list
+
+def query_list_of_dicts(data: List[dict], query_conditions: str, engine='sqlite', table_name: str = 'input_list') -> List[dict]:
+    '''
+    ### Usage
+    #### sqlite engine
+    ```python
+    query_conditions = "age > 25 OR name LIKE '%user11%'"
+    filtered_data = query_list_of_dicts(input_list_of_dicts, query_conditions)
+    ```
+    #### pandas engine
+    ```python
+    query_conditions = 'age == 25 or name.str.contains("user11")'
+    filtered_data = query_list_of_dicts(input_list_of_dicts, query_conditions, engine='pandas')
+    ```
+    '''
+    if engine == 'sqlite':    # ? This is the default engine, as it takes half the time as compared to the pandas engine.
+        return query_list_of_dicts_sqlite(data, query_conditions, table_name)
+    elif engine == 'pandas':
+        return query_list_of_dicts_pandas(data, query_conditions)
+    else:
+        raise ValueError(f"Unknown engine: {engine}")
+
+'''
+    ENDS
+'''
+

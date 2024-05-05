@@ -18,8 +18,8 @@ with open("README.md", "r") as fh:
 setup(
   name = 'ashfaquecodes',         # How you named your package folder (MyLib)
   packages = ['ashfaquecodes'],   # Chose the same as "name"
-  version = '0.7',      # Start with a small number and increase it with every change you make. # * Change in every build.
-  download_url = 'https://github.com/ashfaque/ashfaquecodes/archive/refs/tags/v_07.tar.gz',    # Link of your source code    # * Change in every build.
+  version = '0.8',      # Start with a small number and increase it with every change you make. # * Change in every build.
+  download_url = 'https://github.com/ashfaque/ashfaquecodes/archive/refs/tags/v_08.tar.gz',    # Link of your source code    # * Change in every build.
   license='GNU GPLv3',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository or, https://choosealicense.com/
   description = 'Codes which can be used to increase productivity.',   # Give a short description about your library
   long_description_content_type = "text/markdown",    # Really important if you are using README.md format.
@@ -30,7 +30,8 @@ setup(
   keywords = ['ASHFAQUE', 'ASHFAQUECODES', 'PRODUCTIVITY'],   # Keywords that define your package best
   install_requires=[            # Your packages dependencies    # * Change if current going build adds some dependencies of external packages.
           'colorama'
-          ,
+          # , 'pandas'
+          , 
       ],
   classifiers=[
     'Development Status :: 5 - Production/Stable',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package

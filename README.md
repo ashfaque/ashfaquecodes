@@ -120,6 +120,26 @@ pip install ashfaquecodes
     # Available colors: ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
     ```
 
+- Query a large list of dicts like any SQL WHERE clause.
+    ```python
+    from ashfaquecodes.ashfaquecodes import query_list_of_dicts
+
+    data = [
+        {'age': 23, 'name': 'user11'},
+        {'age': 27, 'name': 'user12'},
+        {'age': 25, 'name': 'user13'}
+    ]
+
+    # Using the 'sqlite' engine (default)
+    query_conditions = "age > 25 OR name LIKE '%user11%'"
+    filtered_data = query_list_of_dicts(input_list_of_dicts, query_conditions)
+
+    # Using the 'pandas' engine (pandas needs to be installed to use this)
+    query_conditions = 'age == 25 or name.str.contains("user11")'
+    filtered_data = query_list_of_dicts(input_list_of_dicts, query_conditions, engine='pandas')
+    ```
+
+
 
 ## License
 [GNU GPLv3](LICENSE)
